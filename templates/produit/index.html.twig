@@ -1,20 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProduitController!{% endblock %}
+
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/wamp64Bis/www/symfonyPHP/e_commerce_exo/src/Controller/ProduitController.php'|file_link(0) }}">src/Controller/ProduitController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/wamp64Bis/www/symfonyPHP/e_commerce_exo/templates/produit/index.html.twig'|file_link(0) }}">templates/produit/index.html.twig</a></code></li>
-    </ul>
+<div class="text-center my-3">
+<h1>Bienvenue sur notre site e commerce</h1>
+<p>Retrouvez un max de Produits et a bon prix(enfin je crois). voilà c'est tout</p>
+  
+    <div class="text-start my-3 row">
+    <div class="col-4 mx-auto">
+        <img src="./image/ecommerce.logo_.png" width="250" height="250">
+    </div>
+    <div class="col-6 mx-auto">
+        <p class="text-info">pour ajouter un produit c en dessous(pour admin et super_admin)</p>
+        <a href={{ path('produit_add') }}><button class="btn btn-info">Ajouter un produit</button></a>
+    </div>
+    </div>
 </div>
+<hr>
+<div class="d-flex flex-wrap justify-content-around my-3">
+{% for produit in produitList %}
+    <div class="card" style="width: 18rem;">
+     <img src={{asset('upload/'~produit.photo)}}  text={{produit.nom}} class="card-img-top">
+      <div class="card-body">
+                <h5 class="card-title">{{produit.nom}}</h5>
+                <p class="card-text">{{produit.prix}} $ </p>
+                <br>
+                <p class="card-text">Stock restant: {{produit.stock}}</p>
+                <br>
+                <a href={{path('produit_single', {id:produit.id})}} class="btn btn-primary">Voir le produit</a>
+            </div>
+    </div>
+{% else %}
+     <h2 class="text-danger">Il n'y a pas ce produit pour le moment(dsl).</h2>
+{% endfor %}
+</div>
+
 {% endblock %}

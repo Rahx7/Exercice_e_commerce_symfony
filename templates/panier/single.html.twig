@@ -3,7 +3,7 @@
 {% block title %} les paniers !{% endblock %}
 
 {% block body %}
-    {% for panier in paniers %}
+    {% if panier %}
 
         <div>
             <pre>
@@ -14,5 +14,5 @@
             <div>user : {{ panier.user }} </div> 
             <div>id : {{ panier.id }} </div>  #}
         </div>
-    {% endfor %}
+    {% endif %}
 {% endblock %}

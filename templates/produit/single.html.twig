@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+ <div class="card" style="width: 18rem;">
+     <img src={{asset('upload/'~produit.photo)}} text={{produit.nom}} class="card-img-top">
+      <div class="card-body">
+                <h5 class="card-title">{{produit.nom}}</h5>
+                <p class="card-text">{{produit.prix}} $</p>
+                 <p class="card-text">{{produit.description}}</p>
+                <p class="card-text">Stock restant: {{produit.stock}}</p>
+                <a href={{path('produit_single', {id:produit.id})}} class="btn btn-primary">ajouter au panier</a>
+            </div>
+    </div>
+{% endblock %}

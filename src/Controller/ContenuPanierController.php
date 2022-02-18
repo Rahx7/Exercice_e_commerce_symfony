@@ -2,17 +2,21 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\ContenuPanier;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ContenuPanierController extends AbstractController
 {
-    #[Route('/contenu/panier', name: 'contenu_panier')]
-    public function index(): Response
+    #[Route('/contenuPanier/{id}', name: 'contenu_panier')]
+    public function index(int $id, ManagerRegistry $manager  ): Response
     {
+        $contenuPanier = $manager->getRepository(ContenuPanier::class)->find($id);
+
         return $this->render('contenu_panier/index.html.twig', [
-            'controller_name' => 'ContenuPanierController',
+            'contenuPanier' => $contenuPanier,
         ]);
     }
 }
