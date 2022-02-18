@@ -9,7 +9,7 @@
                 <p class="card-text">{{produit.prix}} $</p>
                  <p class="card-text">{{produit.description}}</p>
                 <p class="card-text">Stock restant: {{produit.stock}}</p>
-                <a href={{path('produit_single', {id:produit.id})}} class="btn btn-primary">ajouter au panier</a>
+                <a href={{path('panier_add', {id:produit.id})}} class="btn btn-primary">ajouter au panier</a>
             </div>
     </div>
 {% endblock %}

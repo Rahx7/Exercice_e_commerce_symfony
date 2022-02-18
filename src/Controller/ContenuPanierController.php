@@ -19,4 +19,6 @@ class ContenuPanierController extends AbstractController
             'contenuPanier' => $contenuPanier,
         ]);
     }
+
+
 }

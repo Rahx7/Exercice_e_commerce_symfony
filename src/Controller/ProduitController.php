@@ -56,12 +56,12 @@ class ProduitController extends AbstractController
             } catch (FileException $e) {
                 $this->addFlash('danger', "une erreur s'est produite, réessayer!");
                 $this->addFlash('danger', $e->getMessage());
-            }
-            $produit->setPhoto($imageName);
-            
-            $em = $manager->getManager();
-            $em->persist($produit);
-            $em->flush();
+                }
+                $produit->setPhoto($imageName);
+                
+                $em = $manager->getManager();
+                $em->persist($produit);
+                $em->flush();
             } catch (\Exception $e) {
                 $this->addFlash('danger', "une erreur s'est produite, réessayer!");
                 $this->addFlash('danger', $e->getMessage());
